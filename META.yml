@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               WWW-Wappalyzer
-version:            0.01
+version:            0.02
 abstract:           ~
 author:
     - Alexander Nalobin <alexander@nalobin.ru>
