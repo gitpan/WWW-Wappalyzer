@@ -36,11 +36,11 @@ More info:  L<https://github.com/ElbertF/Wappalyzer/blob/master/README.md>
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 
 =head1 SYNOPSIS
@@ -238,8 +238,8 @@ sub _process_app_clues {
     my @html_re;
     # Precompile regexps
     for my $field ( @fields ) {
-        my $re_ref = $app_ref->{$field};
-        my @re_list =   !ref $re_ref ? $re_ref
+        my $re_ref = $app_ref->{ $field };
+        my @re_list =   !ref $re_ref ? _escape_re( $re_ref )
             : ref $re_ref eq 'ARRAY' ? ( map { _escape_re( $_ ) } @$re_ref )
             : () ;
 
@@ -298,6 +298,12 @@ sub _escape_re {
     # Escape { } braces
     $re =~ s/ ([{}]) /[$1]/xig;
 
+    # Escape [^]
+    $re =~ s{\Q[^]\E}{[\\^]}ig;
+
+    # Escape \\1
+    $re =~ s{\Q\1\E}{\\\\1}ig;
+   
     return $re;
 }
 
