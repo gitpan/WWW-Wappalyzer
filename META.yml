@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               WWW-Wappalyzer
-version:            0.08
+version:            0.09
 abstract:           Perl port of Wappalyzer (L<http://wappalyzer.com>)
 author:
     - Alexander Nalobin <alexander@nalobin.ru>
